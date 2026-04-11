@@ -105,10 +105,16 @@ const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsRendered(true);
     }, 500);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
     const handleScroll = () => {
       const techElement = document.getElementById("techstack");
@@ -119,11 +125,13 @@ const TechStack = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     handleScroll();
 
     return () => {
       clearTimeout(timer);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -143,11 +151,12 @@ const TechStack = () => {
   }, []);
 
   const spheres = useMemo(() => {
-    return [...Array(15)].map(() => ({
-      scale: 0.8 + Math.random() * 0.6,
+    const count = isMobile ? 10 : 15;
+    return [...Array(count)].map(() => ({
+      scale: (isMobile ? 0.6 : 0.8) + Math.random() * 0.6,
       materialIndex: Math.floor(Math.random() * materials.length),
     }));
-  }, [materials]);
+  }, [materials, isMobile]);
 
   if (!isRendered) return null;
 
