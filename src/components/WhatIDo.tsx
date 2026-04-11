@@ -15,7 +15,7 @@ const WhatIDo = () => {
   };
 
   useEffect(() => {
-    containerRef.current.forEach((container, index) => {
+    containerRef.current.forEach((container) => {
       if (container) {
         const handler = (e: MouseEvent) => {
           e.stopPropagation();
