@@ -166,7 +166,8 @@ const TechStack = () => {
 
       <Canvas
         shadows
-        gl={{ alpha: true, antialias: true }}
+        gl={{ alpha: true, antialias: !isMobile }}
+        dpr={isMobile ? [1, 1.5] : [1, 2]}
         camera={{ position: [0, 0, 20], fov: 35 }}
         style={{ height: '100%', width: '100%' }}
       >
