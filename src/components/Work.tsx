@@ -1,82 +1,57 @@
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { PORTFOLIO } from "../data/portfolioData";
-
-gsap.registerPlugin(useGSAP);
+import { FiArrowUpRight } from "react-icons/fi";
 
 const Work = () => {
-  useGSAP(() => {
-  let translateX: number = 0;
 
-  function setTranslateX() {
-    const box = document.getElementsByClassName("work-box");
-    const rectLeft = document
-      .querySelector(".work-container")!
-      .getBoundingClientRect().left;
-    const rect = box[0].getBoundingClientRect();
-    const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-    let padding: number =
-      parseInt(window.getComputedStyle(box[0]).padding) / 2;
-    translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-  }
-
-  setTranslateX();
-
-  let timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".work-section",
-      start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
-      scrub: true,
-      pin: true,
-      id: "work",
-    },
-  });
-
-  timeline.to(".work-flex", {
-    x: -translateX,
-    ease: "none",
-  });
-
-  // Clean up (optional, good practice)
-  return () => {
-    timeline.kill();
-    ScrollTrigger.getById("work")?.kill();
-  };
-}, []);
   return (
     <div className="work-section" id="work">
       <div className="work-container section-container">
-        <h2>
-          My <span>Work</span>
-        </h2>
+        <div className="work-header">
+          <span className="work-subtitle">SHOWCASE</span>
+          <h2>
+            Featured <span>Projects</span>
+          </h2>
+        </div>
         <div className="work-flex">
           {PORTFOLIO.projects.map((project, index) => (
             <div className="work-box" key={index}>
-              <a href={project.link} target="_blank" data-cursor="disable">
-                <div className="work-info">
+              <a href={project.link} target="_blank" data-cursor="disable" rel="noreferrer" className="work-card-link">
+                <div className="work-info glass-card">
                   <div className="work-title">
                     <h3>0{index + 1}</h3>
-
-                    <div>
+                    <div className="work-title-meta">
                       <h4>{project.title}</h4>
-                      <p>{project.category}</p>
+                      <p className="work-category">{project.category}</p>
                     </div>
                   </div>
-                  <h4>Tools and features</h4>
-                  <p>{project.tools}</p>
+                  <div className="work-details">
+                    <span className="work-details-label">Tools and features</span>
+                    <div className="work-tags">
+                      {project.tools.split(",").map((tool, idx) => (
+                        <span key={idx} className="work-tag">
+                          {tool.trim()}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="work-card-action">
+                    <span>View Project</span>
+                    <FiArrowUpRight />
+                  </div>
                 </div>
-                <WorkImage image={project.image} alt={project.title} />
+                <div className="work-image-wrapper">
+                  <WorkImage image={project.image} alt={project.title} />
+                </div>
               </a>
             </div>
           ))}
-          <div className="work-box">
+          <div className="work-box last-box">
             <div className="work-more">
-              <a href="https://github.com/ByteLounge?tab=repositories" target="_blank" data-cursor="disable">
-                View More Projects
+              <a href={PORTFOLIO.urls.moreProjects} target="_blank" data-cursor="disable" rel="noreferrer">
+                <span>View More on GitHub</span>
+                <FiArrowUpRight className="view-more-arrow" />
               </a>
             </div>
           </div>

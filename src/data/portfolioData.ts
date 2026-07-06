@@ -18,7 +18,7 @@ export const PORTFOLIO = {
     blogspot: 'https://adreamersbook.blogspot.com',
   },
   urls: {
-    cvDownload: 'https://drive.google.com/file/d/1tQLk1wNPYqCYxIUOjSSiIIWxwtMExK01/view?usp=sharing',
+    cvDownload: 'https://drive.google.com/file/d/1anbX43s0rbgWRaHFTMG8SpeY0n1q2UVV/view?usp=sharing',
     certifications:
       'https://www.linkedin.com/in/yashsanikop/details/certifications/',
     latestProject: 'https://github.com/ByteLounge/Inventory-Management-System',

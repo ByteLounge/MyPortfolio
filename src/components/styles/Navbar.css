@@ -1,91 +1,243 @@
-.header {
-  display: flex;
-  max-width: var(--cMaxWidth);
-  width: var(--cWidth);
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0px;
-  margin-bottom: 0px;
-  box-sizing: border-box;
+.header-capsule {
   position: fixed;
+  top: 24px;
   left: 50%;
   transform: translateX(-50%);
-  top: 0;
+  width: calc(100% - 32px);
+  max-width: 900px;
+  background: var(--glassBackground);
+  backdrop-filter: var(--glassBlur) saturate(180%);
+  -webkit-backdrop-filter: var(--glassBlur) saturate(180%);
+  border: 1px solid var(--glassBorder);
+  border-radius: 40px;
+  padding: 10px 24px;
   z-index: 9999;
-}
-.header ul {
-  font-size: 12px;
   display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 30px var(--shadowPrimary);
+  transition: var(--transition-smooth);
+}
+
+.header-capsule:hover {
+  border-color: var(--glassBorderHover);
+}
+
+.navbar-logo {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--textPrimary);
+  transition: var(--transition-fast);
+}
+
+.navbar-logo span {
+  color: var(--secondaryAccent);
+}
+
+.navbar-desktop ul {
+  display: flex;
   list-style: none;
-  column-gap: 40px;
-  row-gap: 8px;
-  align-items: end;
+  gap: 32px;
+  align-items: center;
 }
-.header ul li {
-  margin-left: 0px;
-  letter-spacing: 1px;
-  color: #ffffff;
-  font-weight: 600;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.3s;
+
+.navbar-desktop ul li {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  transition: var(--transition-fast);
+  position: relative;
+  padding: 6px 0;
 }
-.header ul li:hover {
+
+.navbar-desktop ul li:hover {
   opacity: 1;
 }
-.navbar-connect {
+
+/* Sliding active link indicator */
+.navbar-desktop ul li::after {
+  content: "";
   position: absolute;
-  display: none;
+  bottom: 0;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 15px;
-  letter-spacing: 1px;
+  width: 0;
+  height: 2px;
+  background-color: var(--secondaryAccent);
+  transition: var(--transition-smooth);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.navbar-desktop ul li.active-link {
+  opacity: 1;
+}
+
+.navbar-desktop ul li.active-link::after {
+  width: 16px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle,
+.mobile-menu-toggle {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.15rem;
+  color: var(--textPrimary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--glassBorder);
+  background: rgba(255, 255, 255, 0.03);
+  transition: var(--transition-fast);
+}
+
+.theme-toggle:hover,
+.mobile-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--glassBorderHover);
+  transform: scale(1.05);
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+/* Mobile drawer and overlay styling */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9990;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-nav-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 90px;
+  left: 16px;
+  right: 16px;
+  background: var(--glassBackground);
+  backdrop-filter: var(--glassBlur) saturate(180%);
+  -webkit-backdrop-filter: var(--glassBlur) saturate(180%);
+  border: 1px solid var(--glassBorder);
+  border-radius: 24px;
+  padding: 24px;
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-nav-overlay.open .mobile-nav {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-nav ul li {
+  font-size: 1.1rem;
   font-weight: 500;
-  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 10px;
 }
-.navbar-title {
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  color: #ffffff;
+
+.mobile-nav ul li a {
+  display: block;
+  width: 100%;
 }
-@media only screen and (min-width: 500px) {
-  .header {
-    padding: 20px 0px;
+
+.mobile-nav ul li.active-link a {
+  color: var(--secondaryAccent);
+}
+
+/* Background Glowing Circles */
+.landing-circle1 {
+  top: -10%;
+  left: -10%;
+  z-index: -1;
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 112, 243, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: floatCircle1 20s ease-in-out infinite;
+}
+
+.landing-circle2 {
+  bottom: -10%;
+  right: -10%;
+  z-index: -1;
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: floatCircle2 20s ease-in-out infinite;
+}
+
+@keyframes floatCircle1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
   }
-  .header ul {
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-  }
-  .header ul li {
-    color: #ffffff;
-  }
-  .navbar-title {
-    font-size: 16px;
+  50% {
+    transform: translate(80px, 40px) scale(1.1);
   }
 }
-@media only screen and (min-width: 900px) {
-  .navbar-connect {
-    display: block;
+
+@keyframes floatCircle2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-80px, -40px) scale(1.1);
   }
 }
-@media only screen and (min-width: 1200px) {
-  .header {
-    padding: 35px 0px;
+
+@media only screen and (max-width: 768px) {
+  .navbar-desktop {
+    display: none;
   }
-  .header ul {
-    column-gap: 80px;
-    font-size: 16px;
+  
+  .mobile-menu-toggle {
+    display: flex;
   }
-  .navbar-connect {
-    font-size: 16px;
-  }
-  .navbar-title {
-    font-size: 18px;
+  
+  .header-capsule {
+    top: 16px;
+    padding: 8px 16px;
   }
 }

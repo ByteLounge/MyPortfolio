@@ -2,133 +2,186 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  place-items: center;
   justify-content: center;
   position: relative;
   opacity: 1;
   height: auto;
   margin: auto;
-  margin-bottom: 250px;
-  padding: 120px 0px;
-  background-color: #050505;
+  padding: 120px 0;
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
 }
 
 .career-section h2 {
-  font-size: 70px;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   line-height: 1.1;
-  font-weight: 600;
+  font-weight: 800;
   text-align: center;
-  background: linear-gradient(135deg, #ffffff, var(--secondaryAccent));
+  background: linear-gradient(135deg, var(--textPrimary) 30%, var(--secondaryAccent));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
-  margin-top: 50px;
-  margin-bottom: 90px;
+  margin-top: 60px;
+  margin-bottom: 80px;
   letter-spacing: -0.04em;
 }
-.career-section h2 > span {
-  font-family: "Geist", sans-serif;
+
+.career-section h2 span {
   font-weight: 300;
-  opacity: 0.8;
+  opacity: 0.5;
+  -webkit-text-fill-color: var(--secondaryAccent);
 }
+
 .career-info {
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 0px auto;
+  margin: 0 auto;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
+  /* Add padding to fit the timeline line on the left side */
+  padding-left: 48px;
 }
+
+/* Slick Glass Timeline Track */
+.career-timeline {
+  position: absolute;
+  left: 16px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+[data-theme='light'] .career-timeline {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.career-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--secondaryAccent);
+  box-shadow: 0 0 10px var(--secondaryAccent), 0 0 20px var(--secondaryAccent);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 112, 243, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 112, 243, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 112, 243, 0);
+  }
+}
+
 .career-info-box {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 60px;
-  padding: 40px;
+  flex-direction: column;
+  margin-bottom: 40px;
+  padding: 32px;
   background: var(--glassBackground);
   backdrop-filter: var(--glassBlur);
   -webkit-backdrop-filter: var(--glassBlur);
   border: 1px solid var(--glassBorder);
   border-radius: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.3s;
+  box-shadow: 0 8px 32px var(--shadowPrimary);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  position: relative;
 }
+
+/* Decorative tiny connector dot on the card */
+.career-info-box::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 40px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--backgroundColor);
+  border: 3px solid var(--secondaryAccent);
+  z-index: 5;
+  box-shadow: 0 0 8px var(--secondaryAccent);
+}
+
 .career-info-box:hover {
-  transform: translateY(-10px) scale(1.01);
+  transform: translateY(-4px) scale(1.01);
   border-color: var(--secondaryAccent);
+  box-shadow: 0 12px 40px var(--shadowPrimary), 0 0 20px var(--cardGlow);
 }
-.career-info-box p {
-  width: 45%;
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0;
-  color: #ffffff;
-  opacity: 0.8;
-  line-height: 1.6;
-}
+
 .career-info-in {
   display: flex;
-  width: 45%;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 16px;
+  width: 100%;
 }
+
+.career-role h4 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--textPrimary);
+}
+
 .career-info h3 {
-  font-size: 14px;
+  font-size: 0.75rem;
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--secondaryAccent);
+  white-space: nowrap;
+  background: rgba(0, 112, 243, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 112, 243, 0.15);
 }
 
-.career-info h4 {
-  font-size: 28px;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  font-weight: 600;
-  margin: 0;
-  color: #ffffff;
-}
-.career-info h5 {
+.career-info-box p {
+  font-size: 0.95rem;
   font-weight: 500;
-  font-size: 18px;
-  margin: 5px 0px;
-  color: #ffffff;
-  opacity: 0.7;
-}
-.career-timeline {
-  display: none;
-}
-.career-dot {
-  display: none;
+  margin: 0;
+  color: var(--textSecondary);
+  line-height: 1.6;
 }
 
-@media only screen and (max-width: 1400px) {
-  .career-section h2 {
-    font-size: 50px;
+@media only screen and (max-width: 768px) {
+  .career-info {
+    padding-left: 36px;
   }
-  .career-info h4 {
-    font-size: 22px;
+  
+  .career-timeline {
+    left: 10px;
   }
-}
-@media only screen and (max-width: 1025px) {
-  .career-section {
-    padding: 80px 0px;
-    margin-bottom: 100px;
+
+  .career-info-box::before {
+    left: -32px;
+    width: 12px;
+    height: 12px;
+    top: 36px;
   }
-  .career-info-box {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-}
-@media only screen and (max-width: 900px) {
-  .career-info-box {
+
+  .career-info-in {
     flex-direction: column;
-    gap: 20px;
-    padding: 30px;
+    align-items: flex-start;
+    gap: 8px;
   }
-  .career-info-in,
-  .career-info-box p {
-    width: 100%;
+
+  .career-info-box {
+    padding: 24px;
+    border-radius: 20px;
   }
 }

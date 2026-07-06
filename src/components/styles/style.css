@@ -6,7 +6,7 @@
 }
 .hover-in {
   position: relative;
-  transition: 0.3s;
+  transition: var(--transition-smooth, 0.4s cubic-bezier(0.16, 1, 0.3, 1));
 }
 .hover-in div {
   display: flex;
@@ -16,5 +16,5 @@
 }
 .hover-link:hover .hover-in {
   transform: translateY(-100%);
-  color: var(--accentColor);
+  color: var(--secondaryAccent);
 }

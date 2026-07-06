@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./styles/WhatIDo.css";
 import { PORTFOLIO } from "../data/portfolioData";
+import { FiCode, FiLayers, FiTrendingUp, FiArrowDown } from "react-icons/fi";
 
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -26,8 +27,23 @@ const WhatIDo = () => {
       }
     });
   }, []);
+
+  // Map service index to custom icons
+  const getServiceIcon = (index: number) => {
+    switch (index) {
+      case 0:
+        return <FiCode className="service-icon" />;
+      case 1:
+        return <FiLayers className="service-icon" />;
+      case 2:
+        return <FiTrendingUp className="service-icon" />;
+      default:
+        return <FiCode className="service-icon" />;
+    }
+  };
+
   return (
-    <div className="whatIDO">
+    <div className="whatIDO" id="whatIDO">
       <div className="what-box">
         <h2 className="title">
           W<span className="hat-h2">HAT</span>
@@ -63,7 +79,7 @@ const WhatIDo = () => {
           {PORTFOLIO.services.map((service, index) => (
             <div
               key={index}
-              className="what-content"
+              className="what-content glass-card"
               ref={(el) => setRef(el, index)}
             >
               <div className="what-border1">
@@ -82,13 +98,18 @@ const WhatIDo = () => {
               <div className="what-corner"></div>
 
               <div className="what-content-in">
-                <h3>{service.title.toUpperCase()}</h3>
-                <h4>Description</h4>
-                <p>{service.description}</p>
+                <div className="what-header-row">
+                  {getServiceIcon(index)}
+                  <h3>{service.title.toUpperCase()}</h3>
+                </div>
+                <h4 className="description-label">Description</h4>
+                <p className="service-desc">{service.description}</p>
                 <div 
                   className="what-arrow" 
                   ref={(el) => setArrowRef(el, index)}
-                ></div>
+                >
+                  <FiArrowDown className="arrow-icon" />
+                </div>
               </div>
             </div>
           ))}

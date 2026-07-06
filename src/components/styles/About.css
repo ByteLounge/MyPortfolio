@@ -5,76 +5,93 @@
   place-items: center;
   position: relative;
   opacity: 1;
-  height: auto;
+  min-height: var(--vh);
   width: var(--cWidth);
+  max-width: var(--cMaxWidth);
   margin: auto;
+  padding: 120px 0;
 }
+
 .about-me {
-  padding: 50px 0px;
-  padding-bottom: 0;
-  width: 500px;
-  max-width: calc(100% - 15px);
+  padding: 48px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--glassBackground);
+  backdrop-filter: var(--glassBlur);
+  -webkit-backdrop-filter: var(--glassBlur);
+  border: 1px solid var(--glassBorder);
+  border-radius: 32px;
+  box-shadow: 0 10px 30px var(--shadowPrimary);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
-.about-me h3 {
-  font-size: 25px;
-  text-transform: uppercase;
-  letter-spacing: 7px;
-  font-weight: 400;
+
+.about-me:hover {
+  border-color: var(--glassBorderHover);
+  box-shadow: 0 20px 50px var(--shadowPrimary), 0 0 30px var(--cardGlow);
+}
+
+.about-subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   color: var(--secondaryAccent);
+  text-transform: uppercase;
 }
 
-.about-me p {
-  font-size: 24px;
-  font-weight: 600;
+.about-me h3.title {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--textPrimary);
   line-height: 1.2;
-  letter-spacing: 0.5px;
-  color: #ffffff;
 }
 
-@media only screen and (min-width: 768px) {
-  .about-me p {
-    font-size: 33px;
-    line-height: 36px;
-    letter-spacing: 1px;
-  }
+.about-me p.para {
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--textSecondary);
+  margin: 0;
 }
 
-@media only screen and (min-width: 600px) {
-  .about-section {
-    justify-content: center;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .about-me {
-    width: 500px;
-    max-width: calc(100% - 70px);
-    transform: translateY(0%);
-  }
-  .about-section {
-    opacity: 1;
-  }
-}
+/* Desktop 2-column layout to prevent overlapping with character in the center */
 @media only screen and (min-width: 1025px) {
   .about-section {
-    width: var(--cWidth);
-    justify-content: right;
-    max-width: 1920px;
-    height: var(--vh);
-    padding: 0px;
-    opacity: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: var(--vh);
+    padding: 0;
   }
+  
   .about-me {
-    padding: 0px;
-    width: 50%;
-  }
-  .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
+    grid-column: 2;
+    max-width: 500px;
+    margin-right: 0;
+    justify-self: end;
   }
 }
-@media only screen and (min-width: 1950px) {
-  .about-me p {
-    font-size: 2.5rem;
-    line-height: 2.7rem;
+
+@media only screen and (max-width: 1024px) {
+  .about-section {
+    padding: 80px 0px;
+    justify-content: center;
+  }
+  
+  .about-me {
+    max-width: 100%;
+    box-shadow: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .about-me {
+    padding: 24px;
+    border-radius: 24px;
+    gap: 16px;
   }
 }
