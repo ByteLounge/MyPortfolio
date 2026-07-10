@@ -32,7 +32,7 @@ export const PORTFOLIO = {
         'Focused on applied AI solutions, including NLP and prompt engineering. Built and deployed a Botpress chatbot and developed a Mental Health AI Assistant with contextual conversation flows and prompt fine-tuning.',
     },
     {
-      dates: 'Oct 2025 - Present',
+      dates: 'Oct 2025 - Jan 2026',
       title: 'AI Automation Intern - Backend & Mobile App Intern (CareMeez-Visiwell Solutions Pvt. Ltd.)',
       description:
         'Supported backend database operations including video processing and data handling. Improved frontend UI elements of the CareMeez mobile app and assisted in debugging, optimization, and feature enhancements across the application stack.',
@@ -46,7 +46,7 @@ export const PORTFOLIO = {
   ],
   education: [
     {
-      dates: 'Jul 2023 - Jun 2027',
+      dates: 'Jul 2023 - Jul 2027',
       title: 'Bachelor of Engineering (BE), Computer Engineering - Agnel Institute of Technology and Design',
       description:
         'Focused on software engineering fundamentals with a strong interest in systems, AI, and application integration.',
@@ -62,14 +62,14 @@ export const PORTFOLIO = {
       title: 'Sneaker AI',
       category: 'Artificial Intelligence',
       tools: 'Python, TensorFlow, Keras, Flask',
-      link: 'https://github.com/ByteLounge/Sneaker-AI',
+      link: 'https://github.com/ByteLounge/SneakerAI',
       image: '/images/sneaker.png'
     },
     {
       title: 'NIDS (Network Intrusion Detection System)',
       category: 'Cybersecurity',
       tools: 'Python, Scapy, Machine Learning',
-      link: 'https://github.com/ByteLounge/NIDS',
+      link: 'https://github.com/ByteLounge/Network-Intrusion-Detection-System',
       image: '/images/nids.png'
     },
     {
@@ -78,13 +78,6 @@ export const PORTFOLIO = {
       tools: 'React Native, Android',
       link: 'https://github.com/ByteLounge/Hyperlocal-Air-Intelligence',
       image: '/images/hyperlocal.png'
-    },
-    {
-      title: 'Inventory Management System',
-      category: 'Software Development',
-      tools: 'React, Node.js, Express, MySQL',
-      link: 'https://github.com/ByteLounge/Inventory-Management-System',
-      image: '/images/inventory.png'
     }
   ]
 };
