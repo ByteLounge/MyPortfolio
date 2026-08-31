@@ -33,14 +33,23 @@
 
 .contact-flex {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px;
+  grid-template-columns: auto 1fr auto;
+  gap: 48px;
+  align-items: flex-start;
   width: 100%;
 }
 
 .contact-box {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+
+.contact-social-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
 }
 
@@ -62,18 +71,19 @@
 
 /* Premium Social Buttons/Links */
 a.contact-social {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: var(--textSecondary);
   transition: var(--transition-fast);
-  padding: 8px 16px;
-  border-radius: 12px;
+  padding: 10px 18px;
+  border-radius: 14px;
   border: 1px solid var(--glassBorder);
   background: rgba(255, 255, 255, 0.02);
   width: fit-content;
+  white-space: nowrap;
 }
 
 [data-theme='light'] a.contact-social {
@@ -83,8 +93,9 @@ a.contact-social {
 a.contact-social:hover {
   color: var(--secondaryAccent);
   border-color: var(--secondaryAccent);
-  transform: translateX(4px) scale(1.02);
-  background: rgba(0, 112, 243, 0.05);
+  transform: translateY(-2px);
+  background: rgba(0, 112, 243, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 112, 243, 0.15);
 }
 
 .contact-box h2 {

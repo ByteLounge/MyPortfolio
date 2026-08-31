@@ -12,40 +12,42 @@ const Contact = () => {
             <h4>Location</h4>
             <p>{PORTFOLIO.person.location}</p>
           </div>
-          <div className="contact-box">
+          <div className="contact-box contact-social-box">
             <h4>Social</h4>
-            <a
-              href={PORTFOLIO.links.github}
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Github <MdArrowOutward />
-            </a>
-            <a
-              href={PORTFOLIO.links.linkedin}
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Linkedin <MdArrowOutward />
-            </a>
-            <a
-              href={PORTFOLIO.links.instagram}
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Instagram <MdArrowOutward />
-            </a>
-            <a
-              href={PORTFOLIO.links.blogspot}
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Blogspot <MdArrowOutward />
-            </a>
+            <div className="contact-social-group">
+              <a
+                href={PORTFOLIO.links.github}
+                target="_blank"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                Github <MdArrowOutward />
+              </a>
+              <a
+                href={PORTFOLIO.links.linkedin}
+                target="_blank"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                Linkedin <MdArrowOutward />
+              </a>
+              <a
+                href={PORTFOLIO.links.instagram}
+                target="_blank"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                Instagram <MdArrowOutward />
+              </a>
+              <a
+                href={PORTFOLIO.links.blogspot}
+                target="_blank"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                Blogspot <MdArrowOutward />
+              </a>
+            </div>
           </div>
           <div className="contact-box">
             <h5>
