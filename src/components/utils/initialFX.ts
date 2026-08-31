@@ -8,7 +8,6 @@ export function initialFX() {
     if (mainElements.length > 0) {
       mainElements[0].classList.add("main-active");
     }
-    gsap.to("body", { backgroundColor: "#050505", duration: 0 });
     gsap.to([".header", ".icons-section", ".nav-fade", ".landing-info-h2"], { opacity: 1, duration: 0 });
   };
 
@@ -20,12 +19,7 @@ export function initialFX() {
   if (mainElements.length > 0) {
     mainElements[0].classList.add("main-active");
   }
-  gsap.to("body", {
-    backgroundColor: "#050505",
-    duration: 0.5,
-    delay: 1,
-    onComplete: () => clearTimeout(safetyTimeout)
-  });
+  clearTimeout(safetyTimeout);
 
   const landingTargets = [".landing-info h3", ".landing-intro h2", ".landing-intro h1"].filter(s => document.querySelector(s));
   if (landingTargets.length > 0) {

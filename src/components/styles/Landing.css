@@ -160,6 +160,14 @@
   transform: translateY(-2px);
 }
 
+[data-theme='light'] .btn-secondary {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='light'] .btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
   position: absolute;

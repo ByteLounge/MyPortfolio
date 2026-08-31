@@ -32,16 +32,16 @@
 
 [data-theme='light'] {
   /* Light Theme */
-  --backgroundColor: #f5f5f7; /* Apple Off-White */
+  --backgroundColor: #ffffff;
   --sectionBackground: #ffffff;
   --accentColor: #000000;
   --secondaryAccent: #0070f3;
-  --textPrimary: #1d1d1f; /* Apple Text Primary */
-  --textSecondary: #424245; /* Darkened Slate Gray 700 */
-  --textMuted: #6e6e73; /* Darkened Slate Gray 500 */
+  --textPrimary: #111827;
+  --textSecondary: #4b5563;
+  --textMuted: #6b7280;
 
   /* Liquid Glass (Light) */
-  --glassBackground: rgba(255, 255, 255, 0.45);
+  --glassBackground: rgba(255, 255, 255, 0.75);
   --glassBorder: rgba(0, 0, 0, 0.08);
   --glassBorderHover: rgba(0, 0, 0, 0.16);
   --glassBlur: blur(20px);
