@@ -41,8 +41,8 @@
   height: 80px;
   border-radius: 50%;
   padding: 3px;
-  background: linear-gradient(135deg, var(--secondaryAccent), rgba(255, 255, 255, 0.2));
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, var(--glassBorderHover), var(--glassBorder));
+  box-shadow: 0 8px 24px var(--shadowPrimary);
 }
 
 .profile-avatar {
@@ -62,7 +62,7 @@
   border-radius: 50%;
   background-color: #10b981;
   border: 2px solid var(--backgroundColor);
-  box-shadow: 0 0 12px #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
 }
 
 /* Typography Hierarchy */
@@ -76,7 +76,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--secondaryAccent);
+  color: var(--textSecondary);
   text-transform: uppercase;
 }
 
@@ -139,11 +139,11 @@
 }
 
 .btn-primary:hover {
-  background: var(--secondaryAccent);
-  border-color: var(--secondaryAccent);
-  color: #ffffff;
+  background: var(--textSecondary);
+  border-color: var(--textSecondary);
+  color: var(--backgroundColor);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 112, 243, 0.3);
+  box-shadow: 0 8px 24px var(--shadowPrimary);
 }
 
 .btn-secondary {

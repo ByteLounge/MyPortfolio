@@ -7,23 +7,23 @@
   --transition-fast: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Dark Theme (Default) */
-  --backgroundColor: #050505;
-  --sectionBackground: #0a0a0a;
+  /* Dark Theme (Default) - Minimalist Obsidian / Zinc */
+  --backgroundColor: #09090b;
+  --sectionBackground: #121215;
   --accentColor: #ffffff;
-  --secondaryAccent: #0070f3; /* Apple/Vercel Blue */
-  --textPrimary: #ffffff;
-  --textSecondary: #8f9cae;
-  --textMuted: #5c6c7f;
+  --secondaryAccent: #ffffff;
+  --textPrimary: #f4f4f5;
+  --textSecondary: #a1a1aa;
+  --textMuted: #71717a;
   
   /* Liquid Glass (Dark) */
-  --glassBackground: rgba(10, 10, 10, 0.45);
+  --glassBackground: rgba(24, 24, 27, 0.65);
   --glassBorder: rgba(255, 255, 255, 0.08);
-  --glassBorderHover: rgba(255, 255, 255, 0.16);
+  --glassBorderHover: rgba(255, 255, 255, 0.18);
   --glassBlur: blur(20px);
-  --shadowPrimary: rgba(0, 0, 0, 0.6);
-  --cardGlow: rgba(0, 112, 243, 0.12);
-  --borderAccent: rgba(0, 112, 243, 0.3);
+  --shadowPrimary: rgba(0, 0, 0, 0.4);
+  --cardGlow: rgba(255, 255, 255, 0.04);
+  --borderAccent: rgba(255, 255, 255, 0.15);
 
   --vh: 100vh;
   --cWidth: calc(100% - 48px);
@@ -31,23 +31,23 @@
 }
 
 [data-theme='light'] {
-  /* Light Theme */
+  /* Light Theme - Minimalist White / Slate */
   --backgroundColor: #ffffff;
-  --sectionBackground: #ffffff;
-  --accentColor: #000000;
-  --secondaryAccent: #0070f3;
-  --textPrimary: #111827;
-  --textSecondary: #4b5563;
-  --textMuted: #6b7280;
+  --sectionBackground: #f4f4f5;
+  --accentColor: #09090b;
+  --secondaryAccent: #09090b;
+  --textPrimary: #09090b;
+  --textSecondary: #52525b;
+  --textMuted: #71717a;
 
   /* Liquid Glass (Light) */
-  --glassBackground: rgba(255, 255, 255, 0.75);
+  --glassBackground: rgba(255, 255, 255, 0.85);
   --glassBorder: rgba(0, 0, 0, 0.08);
-  --glassBorderHover: rgba(0, 0, 0, 0.16);
+  --glassBorderHover: rgba(0, 0, 0, 0.18);
   --glassBlur: blur(20px);
-  --shadowPrimary: rgba(0, 0, 0, 0.04);
-  --cardGlow: rgba(0, 112, 243, 0.06);
-  --borderAccent: rgba(0, 112, 243, 0.2);
+  --shadowPrimary: rgba(0, 0, 0, 0.03);
+  --cardGlow: rgba(0, 0, 0, 0.03);
+  --borderAccent: rgba(0, 0, 0, 0.15);
 }
 
 * {

@@ -200,22 +200,22 @@
   color: var(--secondaryAccent);
 }
 
-/* Background Glowing Circles */
+/* Background Ambient Diffuse Lighting */
 .landing-circle1 {
   top: -10%;
   left: -10%;
   z-index: -1;
   position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 112, 243, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-  filter: blur(80px);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(100px);
   pointer-events: none;
   animation: floatCircle1 20s ease-in-out infinite;
 }
 
 [data-theme='light'] .landing-circle1 {
-  background: radial-gradient(circle, rgba(0, 112, 243, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
 .landing-circle2 {
@@ -223,16 +223,16 @@
   right: -10%;
   z-index: -1;
   position: fixed;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-  filter: blur(80px);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(100px);
   pointer-events: none;
   animation: floatCircle2 20s ease-in-out infinite;
 }
 
 [data-theme='light'] .landing-circle2 {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.015) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
 @keyframes floatCircle1 {

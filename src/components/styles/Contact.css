@@ -28,7 +28,7 @@
   letter-spacing: -0.03em;
   margin: 0 0 40px 0;
   text-transform: uppercase;
-  color: var(--secondaryAccent);
+  color: var(--textPrimary);
 }
 
 .contact-flex {
@@ -91,11 +91,15 @@ a.contact-social {
 }
 
 a.contact-social:hover {
-  color: var(--secondaryAccent);
-  border-color: var(--secondaryAccent);
+  color: var(--textPrimary);
+  border-color: var(--glassBorderHover);
   transform: translateY(-2px);
-  background: rgba(0, 112, 243, 0.06);
-  box-shadow: 0 4px 12px rgba(0, 112, 243, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px var(--shadowPrimary);
+}
+
+[data-theme='light'] a.contact-social:hover {
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .contact-box h2 {

@@ -66,20 +66,37 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: var(--secondaryAccent);
-  box-shadow: 0 0 10px var(--secondaryAccent), 0 0 20px var(--secondaryAccent);
+  background-color: var(--textPrimary);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
   animation: pulseDot 2s infinite;
 }
 
 @keyframes pulseDot {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 112, 243, 0.7);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(0, 112, 243, 0);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(0, 112, 243, 0);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+[data-theme='light'] .career-dot {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  animation: pulseDotLight 2s infinite;
+}
+
+@keyframes pulseDotLight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.25);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
 
@@ -108,15 +125,19 @@
   height: 16px;
   border-radius: 50%;
   background: var(--backgroundColor);
-  border: 3px solid var(--secondaryAccent);
+  border: 3px solid var(--textPrimary);
   z-index: 5;
-  box-shadow: 0 0 8px var(--secondaryAccent);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+[data-theme='light'] .career-info-box::before {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .career-info-box:hover {
   transform: translateY(-4px) scale(1.01);
-  border-color: var(--secondaryAccent);
-  box-shadow: 0 12px 40px var(--shadowPrimary), 0 0 20px var(--cardGlow);
+  border-color: var(--glassBorderHover);
+  box-shadow: 0 16px 48px var(--shadowPrimary), 0 0 20px var(--cardGlow);
 }
 
 .career-info-in {
@@ -142,12 +163,16 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--secondaryAccent);
+  color: var(--textPrimary);
   white-space: nowrap;
-  background: rgba(0, 112, 243, 0.1);
+  background: rgba(255, 255, 255, 0.06);
   padding: 6px 12px;
   border-radius: 20px;
-  border: 1px solid rgba(0, 112, 243, 0.15);
+  border: 1px solid var(--glassBorder);
+}
+
+[data-theme='light'] .career-info h3 {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .career-info-box p {

@@ -16,11 +16,10 @@
     border-radius: 50%;
     pointer-events: none;
     z-index: 999999;
-    border: 1.5px solid var(--secondaryAccent);
-    background: rgba(0, 112, 243, 0.05);
-    box-shadow: 0 0 10px rgba(0, 112, 243, 0.2);
+    border: 1.5px solid var(--textPrimary);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     opacity: 0.8;
-    /* transition: transform 0.1s ease-out; */
   }
 
   .cursor-main::before {
@@ -32,15 +31,24 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: var(--secondaryAccent);
-    box-shadow: 0 0 6px var(--secondaryAccent);
+    background-color: var(--textPrimary);
+    box-shadow: 0 0 6px var(--textPrimary);
   }
 
   .cursor-icons {
     width: 45px;
     height: var(--cursorH);
     border-radius: 12px;
-    background: rgba(0, 112, 243, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  [data-theme='light'] .cursor-main {
+    background: rgba(0, 0, 0, 0.03);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+  }
+
+  [data-theme='light'] .cursor-icons {
+    background: rgba(0, 0, 0, 0.05);
   }
 
   .cursor-disable {

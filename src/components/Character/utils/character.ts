@@ -35,7 +35,7 @@ const setCharacter = (
                 if (name.includes("hair")) {
                   child.material.color.set("#111111");
                 } else if (name.includes("outfit_top")) {
-                  child.material.color.set("#0070f3"); // Vibrant Blue Hoodie
+                  child.material.color.set("#1c1c1f"); // Sleek Minimalist Matte Obsidian Hoodie
                 } else if (name.includes("glasses")) {
                   child.material.color.set("#111111");
                 } else if (name.includes("beard") || name.includes("facewear")) {

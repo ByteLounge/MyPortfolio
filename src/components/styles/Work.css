@@ -101,8 +101,8 @@
 }
 
 .work-info:hover {
-  border-color: var(--secondaryAccent);
-  box-shadow: 0 15px 45px var(--shadowPrimary), 0 0 25px var(--cardGlow);
+  border-color: var(--glassBorderHover);
+  box-shadow: 0 16px 48px var(--shadowPrimary), 0 0 25px var(--cardGlow);
 }
 
 .work-title {
@@ -137,7 +137,7 @@
 .work-category {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--secondaryAccent);
+  color: var(--textSecondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -179,8 +179,8 @@
 }
 
 .work-card-link:hover .work-tag {
-  border-color: rgba(0, 112, 243, 0.2);
-  color: var(--secondaryAccent);
+  border-color: var(--glassBorderHover);
+  color: var(--textPrimary);
 }
 
 /* Link Actions */
@@ -196,7 +196,7 @@
 }
 
 .work-card-link:hover .work-card-action {
-  color: var(--secondaryAccent);
+  color: var(--textPrimary);
   transform: translateX(4px);
 }
 
@@ -212,7 +212,7 @@
 
 .work-card-link:hover .work-image-wrapper {
   transform: translateY(4px);
-  border-color: var(--secondaryAccent);
+  border-color: var(--glassBorderHover);
 }
 
 .work-image img {
@@ -259,11 +259,11 @@
 }
 
 .work-more a:hover {
-  background-color: var(--secondaryAccent);
-  color: #ffffff;
-  border-color: var(--secondaryAccent);
-  transform: scale(1.08);
-  box-shadow: 0 15px 30px rgba(0, 112, 243, 0.3);
+  background-color: var(--textPrimary);
+  color: var(--backgroundColor);
+  border-color: var(--textPrimary);
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px var(--shadowPrimary);
 }
 
 .view-more-arrow {

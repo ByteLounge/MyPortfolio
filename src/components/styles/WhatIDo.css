@@ -86,16 +86,16 @@
   height: 60%;
   box-shadow: 0 20px 40px var(--shadowPrimary);
   z-index: 2;
-  border-color: var(--secondaryAccent);
+  border-color: var(--glassBorderHover);
 }
 
 .what-content-active .service-icon {
-  color: var(--secondaryAccent);
+  color: var(--textPrimary);
   transform: scale(1.1);
 }
 
 .what-content-active h3 {
-  color: var(--secondaryAccent);
+  color: var(--textPrimary);
 }
 
 .what-content.what-sibling {
@@ -168,8 +168,8 @@
 }
 
 .what-content-active .what-arrow {
-  background-color: var(--secondaryAccent);
-  border-color: var(--secondaryAccent);
+  background-color: var(--textPrimary);
+  border-color: var(--textPrimary);
   transform: rotate(180deg);
 }
 
@@ -180,7 +180,7 @@
 }
 
 .what-content-active .arrow-icon {
-  color: #ffffff;
+  color: var(--backgroundColor);
 }
 
 .what-border1, .what-border2, .what-corner {
