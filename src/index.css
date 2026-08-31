@@ -17,13 +17,13 @@
   --textMuted: #71717a;
   
   /* Liquid Glass (Dark) */
-  --glassBackground: rgba(24, 24, 27, 0.65);
-  --glassBorder: rgba(255, 255, 255, 0.08);
-  --glassBorderHover: rgba(255, 255, 255, 0.18);
+  --glassBackground: rgba(24, 24, 27, 0.7);
+  --glassBorder: rgba(255, 255, 255, 0.16);
+  --glassBorderHover: rgba(255, 255, 255, 0.35);
   --glassBlur: blur(20px);
-  --shadowPrimary: rgba(0, 0, 0, 0.4);
-  --cardGlow: rgba(255, 255, 255, 0.04);
-  --borderAccent: rgba(255, 255, 255, 0.15);
+  --shadowPrimary: rgba(0, 0, 0, 0.45);
+  --cardGlow: rgba(255, 255, 255, 0.05);
+  --borderAccent: rgba(255, 255, 255, 0.25);
 
   --vh: 100vh;
   --cWidth: calc(100% - 48px);
@@ -42,12 +42,12 @@
 
   /* Liquid Glass (Light) */
   --glassBackground: rgba(255, 255, 255, 0.85);
-  --glassBorder: rgba(0, 0, 0, 0.08);
-  --glassBorderHover: rgba(0, 0, 0, 0.18);
+  --glassBorder: rgba(0, 0, 0, 0.12);
+  --glassBorderHover: rgba(0, 0, 0, 0.28);
   --glassBlur: blur(20px);
-  --shadowPrimary: rgba(0, 0, 0, 0.03);
+  --shadowPrimary: rgba(0, 0, 0, 0.05);
   --cardGlow: rgba(0, 0, 0, 0.03);
-  --borderAccent: rgba(0, 0, 0, 0.15);
+  --borderAccent: rgba(0, 0, 0, 0.2);
 }
 
 * {

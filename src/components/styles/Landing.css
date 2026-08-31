@@ -258,8 +258,8 @@
 
   .hero-profile-card {
     max-width: 100%;
-    box-shadow: none;
-    border-color: var(--glassBorder);
+    border: 1px solid var(--glassBorder);
+    box-shadow: 0 8px 24px var(--shadowPrimary);
     background: var(--glassBackground);
   }
 
