@@ -8,7 +8,10 @@ export function initialFX() {
     if (mainElements.length > 0) {
       mainElements[0].classList.add("main-active");
     }
-    gsap.to([".header", ".icons-section", ".nav-fade", ".landing-info-h2"], { opacity: 1, duration: 0 });
+    const forceTargets = [".header-capsule", ".icons-section", ".nav-fade"].filter(s => document.querySelector(s));
+    if (forceTargets.length > 0) {
+      gsap.to(forceTargets, { opacity: 1, duration: 0 });
+    }
   };
 
   const safetyTimeout = setTimeout(forceShow, 3000);
@@ -77,27 +80,33 @@ export function initialFX() {
     }
   }
 
-  gsap.fromTo(
-    ".landing-info-h2",
-    { opacity: 0, y: 30 },
-    {
-      opacity: 1,
-      duration: 1.2,
-      ease: "power1.inOut",
-      y: 0,
-      delay: 0.8,
-    }
-  );
-  gsap.fromTo(
-    [".header", ".icons-section", ".nav-fade"],
-    { opacity: 0 },
-    {
-      opacity: 1,
-      duration: 1.2,
-      ease: "power1.inOut",
-      delay: 0.1,
-    }
-  );
+  if (document.querySelector(".landing-info-h2")) {
+    gsap.fromTo(
+      ".landing-info-h2",
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        duration: 1.2,
+        ease: "power1.inOut",
+        y: 0,
+        delay: 0.8,
+      }
+    );
+  }
+
+  const fadeTargets = [".header-capsule", ".icons-section", ".nav-fade"].filter(s => document.querySelector(s));
+  if (fadeTargets.length > 0) {
+    gsap.fromTo(
+      fadeTargets,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1.2,
+        ease: "power1.inOut",
+        delay: 0.1,
+      }
+    );
+  }
 
   const t4 = document.querySelector(".landing-h2-1");
   const t5 = document.querySelector(".landing-h2-2");

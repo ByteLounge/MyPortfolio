@@ -95,7 +95,7 @@ export function setCharTimeline(
         .fromTo(
           ".character-model",
           { xPercent: -75, opacity: 1 },
-          { xPercent: -50, opacity: 1, delay: 2, duration: 5 },
+          { xPercent: -63, opacity: 1, delay: 2, duration: 5 },
           0
         )
         .to(character.rotation, { y: 0.92, x: 0.12, delay: 3, duration: 3 }, 0);
@@ -135,8 +135,8 @@ export function setCharTimeline(
       tl3
         .fromTo(
           ".character-model",
-          { yPercent: 0, xPercent: -50, opacity: 1 },
-          { yPercent: -100, xPercent: -50, opacity: 1, duration: 4, ease: "none" },
+          { yPercent: 0, xPercent: -63, opacity: 1 },
+          { yPercent: -100, xPercent: -63, opacity: 1, duration: 4, ease: "none" },
           0
         )
         .fromTo(".whatIDO", { y: 0 }, { y: "15%", duration: 2 }, 0)
