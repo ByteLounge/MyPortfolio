@@ -3,7 +3,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 const setVH = () => {
-  let vh = window.innerHeight;
+  const vh = window.innerHeight;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 };
 setVH();

@@ -4,16 +4,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
-ScrollTrigger.normalizeScroll(true);
 
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
   camera: THREE.PerspectiveCamera
 ) {
-  let intensity: number = 0;
-  setInterval(() => {
-    intensity = Math.random();
-  }, 200);
   const tl1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".landing-section",
@@ -41,31 +36,44 @@ export function setCharTimeline(
       invalidateOnRefresh: true,
     },
   });
-  let screenLight: any, monitor: any;
-  character?.children.forEach((object: any) => {
+  let screenLight: THREE.Mesh | undefined;
+  let monitor: THREE.Mesh | undefined;
+
+  character?.children.forEach((object) => {
     if (object.name === "Plane004") {
-      object.children.forEach((child: any) => {
-        child.material.transparent = true;
-        child.material.opacity = 0;
-        if (child.material.name === "Material.027") {
-          monitor = child;
-          child.material.color.set("#FFFFFF");
+      object.children.forEach((child) => {
+        if ((child as THREE.Mesh).isMesh) {
+          const mesh = child as THREE.Mesh;
+          const mat = mesh.material as THREE.MeshStandardMaterial | undefined;
+          if (mat) {
+            mat.transparent = true;
+            mat.opacity = 0;
+            if (mat.name === "Material.027") {
+              monitor = mesh;
+              mat.color.set("#FFFFFF");
+            }
+          }
         }
       });
     }
-    if (object.name === "screenlight") {
-      object.material.transparent = true;
-      object.material.opacity = 0;
-      object.material.emissive.set("#FFFFFF");
-      gsap.timeline({ repeat: -1, repeatRefresh: true }).to(object.material, {
-        emissiveIntensity: () => intensity * 8,
-        duration: () => Math.random() * 0.6,
-        delay: () => Math.random() * 0.1,
-      });
-      screenLight = object;
+    if (object.name === "screenlight" && (object as THREE.Mesh).isMesh) {
+      const mesh = object as THREE.Mesh;
+      const mat = mesh.material as THREE.MeshStandardMaterial | undefined;
+      if (mat) {
+        mat.transparent = true;
+        mat.opacity = 0;
+        mat.emissive.set("#FFFFFF");
+        gsap.timeline({ repeat: -1, repeatRefresh: true }).to(mat, {
+          emissiveIntensity: () => Math.random() * 8,
+          duration: () => Math.random() * 0.6,
+          delay: () => Math.random() * 0.1,
+        });
+        screenLight = mesh;
+      }
     }
   });
-  let neckBone = character?.getObjectByName("spine005");
+
+  const neckBone = character?.getObjectByName("spine005");
   if (window.innerWidth > 1024) {
     if (character) {
       tl1
@@ -90,20 +98,31 @@ export function setCharTimeline(
           { xPercent: -50, opacity: 1, delay: 2, duration: 5 },
           0
         )
-        .to(character.rotation, { y: 0.92, x: 0.12, delay: 3, duration: 3 }, 0)
-        .to(neckBone!.rotation, { x: 0.6, delay: 2, duration: 3 }, 0)
-        .to(monitor.material, { opacity: 1, duration: 0.8, delay: 3.2 }, 0)
-        .to(screenLight.material, { opacity: 1, duration: 0.8, delay: 4.5 }, 0)
+        .to(character.rotation, { y: 0.92, x: 0.12, delay: 3, duration: 3 }, 0);
+
+      if (neckBone) {
+        tl2.to(neckBone.rotation, { x: 0.6, delay: 2, duration: 3 }, 0);
+      }
+      if (monitor) {
+        const monMat = monitor.material as THREE.Material;
+        tl2.to(monMat, { opacity: 1, duration: 0.8, delay: 3.2 }, 0);
+        tl2.fromTo(
+          monitor.position,
+          { y: -10, z: 2 },
+          { y: 0, z: 0, delay: 1.5, duration: 3 },
+          0
+        );
+      }
+      if (screenLight) {
+        const screenMat = screenLight.material as THREE.Material;
+        tl2.to(screenMat, { opacity: 1, duration: 0.8, delay: 4.5 }, 0);
+      }
+
+      tl2
         .fromTo(
           ".what-box-in",
           { display: "none" },
           { display: "flex", duration: 0.1, delay: 6 },
-          0
-        )
-        .fromTo(
-          monitor.position,
-          { y: -10, z: 2 },
-          { y: 0, z: 0, delay: 1.5, duration: 3 },
           0
         )
         .fromTo(

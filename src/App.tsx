@@ -1,7 +1,8 @@
 import "./App.css";
 import CharacterModel from "./components/Character";
 import MainContainer from "./components/MainContainer";
-import { LoadingProvider, useLoading } from "./context/LoadingProvider";
+import { LoadingProvider } from "./context/LoadingProvider";
+import { useLoading } from "./context/loadingContext";
 import { useEffect } from "react";
 
 const DebugLoader = () => {

@@ -158,43 +158,43 @@ const TechStack = () => {
     }));
   }, [materials, isMobile]);
 
-  if (!isRendered) return null;
-
   return (
     <div className="techstack" id="techstack">
       <h2 className="title">Tech <span>Stack</span></h2>
 
-      <Canvas
-        shadows
-        gl={{ alpha: true, antialias: !isMobile }}
-        dpr={isMobile ? [1, 1.5] : [1, 2]}
-        camera={{ position: [0, 0, 20], fov: 35 }}
-        style={{ height: '100%', width: '100%' }}
-      >
-        <ambientLight intensity={1.5} />
-        <spotLight
-          position={[10, 10, 10]}
-          angle={0.15}
-          penumbra={1}
-          intensity={2}
-          castShadow
-        />
-        <Physics gravity={[0, 0, 0]}>
-          <Pointer isActive={isActive} />
-          {spheres.map((props, i) => (
-            <SphereGeo
-              key={i}
-              scale={props.scale}
-              material={materials[props.materialIndex]}
-              isActive={isActive}
-            />
-          ))}
-        </Physics>
-        <Environment
-          files="/models/char_enviorment.hdr"
-          environmentIntensity={0.8}
-        />
-      </Canvas>
+      {isRendered && (
+        <Canvas
+          shadows
+          gl={{ alpha: true, antialias: !isMobile }}
+          dpr={isMobile ? [1, 1.5] : [1, 2]}
+          camera={{ position: [0, 0, 20], fov: 35 }}
+          style={{ height: '100%', width: '100%' }}
+        >
+          <ambientLight intensity={1.5} />
+          <spotLight
+            position={[10, 10, 10]}
+            angle={0.15}
+            penumbra={1}
+            intensity={2}
+            castShadow
+          />
+          <Physics gravity={[0, 0, 0]}>
+            <Pointer isActive={isActive} />
+            {spheres.map((props, i) => (
+              <SphereGeo
+                key={i}
+                scale={props.scale}
+                material={materials[props.materialIndex]}
+                isActive={isActive}
+              />
+            ))}
+          </Physics>
+          <Environment
+            files="/models/char_enviorment.hdr"
+            environmentIntensity={0.8}
+          />
+        </Canvas>
+      )}
     </div>
   );
 };

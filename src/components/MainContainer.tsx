@@ -27,7 +27,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, []);
 
   return (
     <div className="container-main">
@@ -36,7 +36,7 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Navbar />
       <SocialIcons />
       {isDesktopView && children}
-      <div className="container-main">
+      <div className="sections-wrapper">
         <Landing>{!isDesktopView && children}</Landing>
         <About />
         <WhatIDo />

@@ -13,38 +13,40 @@ const setCharacter = (
   dracoLoader.setDecoderPath("/draco/");
   loader.setDRACOLoader(dracoLoader);
 
-  const loadCharacter = () => {
-    return new Promise<GLTF | null>(async (resolve, reject) => {
-      try {
-        const encryptedBlob = await decryptFile(
-          "/models/character.enc",
-          "Character3D#@"
-        );
-        const blobUrl = URL.createObjectURL(new Blob([encryptedBlob]));
+  const loadCharacter = async (): Promise<GLTF | null> => {
+    try {
+      const encryptedBlob = await decryptFile(
+        "/models/character.enc",
+        "Character3D#@"
+      );
+      const blobUrl = URL.createObjectURL(new Blob([encryptedBlob]));
 
-        let character: THREE.Object3D;
+      return await new Promise<GLTF | null>((resolve, reject) => {
         loader.load(
           blobUrl,
           async (gltf) => {
-            character = gltf.scene;
+            URL.revokeObjectURL(blobUrl);
+            const character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
-            character.traverse((child: any) => {
-              if (child.isMesh) {
-                // Match GitHub profile appearance (Ready Player Me standard names)
+            character.traverse((child: THREE.Object3D) => {
+              if ((child as THREE.Mesh).isMesh) {
+                const mesh = child as THREE.Mesh;
                 const name = child.name.toLowerCase();
-                if (name.includes("hair")) {
-                  child.material.color.set("#111111");
-                } else if (name.includes("outfit_top")) {
-                  child.material.color.set("#1c1c1f"); // Sleek Minimalist Matte Obsidian Hoodie
-                } else if (name.includes("glasses")) {
-                  child.material.color.set("#111111");
-                } else if (name.includes("beard") || name.includes("facewear")) {
-                  child.material.color.set("#222222");
+                const mat = mesh.material as THREE.MeshStandardMaterial | undefined;
+                if (mat && "color" in mat && mat.color) {
+                  if (name.includes("hair")) {
+                    mat.color.set("#111111");
+                  } else if (name.includes("outfit_top")) {
+                    mat.color.set("#1c1c1f"); // Sleek Minimalist Matte Obsidian Hoodie
+                  } else if (name.includes("glasses")) {
+                    mat.color.set("#111111");
+                  } else if (name.includes("beard") || name.includes("facewear")) {
+                    mat.color.set("#222222");
+                  }
                 }
 
-                const mesh = child as THREE.Mesh;
-                child.castShadow = true;
-                child.receiveShadow = true;
+                mesh.castShadow = true;
+                mesh.receiveShadow = true;
                 mesh.frustumCulled = true;
               }
             });
@@ -52,21 +54,24 @@ const setCharacter = (
             resolve(gltf);
             setCharTimeline(character, camera);
             setAllTimeline();
-            character!.getObjectByName("footR")!.position.y = 3.36;
-            character!.getObjectByName("footL")!.position.y = 3.36;
+            const footR = character.getObjectByName("footR");
+            if (footR) footR.position.y = 3.36;
+            const footL = character.getObjectByName("footL");
+            if (footL) footL.position.y = 3.36;
             dracoLoader.dispose();
           },
           undefined,
           (error) => {
+            URL.revokeObjectURL(blobUrl);
             console.error("Error loading GLTF model:", error);
             reject(error);
           }
         );
-      } catch (err) {
-        reject(err);
-        console.error(err);
-      }
-    });
+      });
+    } catch (err) {
+      console.error("Error decrypting or loading character:", err);
+      throw err;
+    }
   };
 
   return { loadCharacter };

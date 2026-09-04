@@ -21,9 +21,11 @@ export function initialFX() {
   }
   clearTimeout(safetyTimeout);
 
-  const landingTargets = [".landing-info h3", ".landing-intro h2", ".landing-intro h1"].filter(s => document.querySelector(s));
+  const landingTargets = [".landing-info h3", ".landing-intro h2", ".landing-intro h1"]
+    .map(s => document.querySelector(s))
+    .filter((el): el is HTMLElement => el !== null);
   if (landingTargets.length > 0) {
-    const landingText = new SplitType(landingTargets as any, {
+    const landingText = new SplitType(landingTargets, {
       types: "chars,lines",
       lineClass: "split-line",
     });
@@ -114,7 +116,7 @@ export function initialFX() {
 }
 
 function LoopText(Text1: SplitType, Text2: SplitType) {
-  var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+  const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
   const delay = 4;
   const delay2 = delay * 2 + 1;
 

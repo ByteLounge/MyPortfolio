@@ -3,7 +3,7 @@ import { PORTFOLIO } from "../data/portfolioData";
 
 const Career = () => {
   return (
-    <div className="career-section section-container">
+    <div className="career-section section-container" id="career">
       <div className="career-container">
         <h2>
           My career <span>&</span>
@@ -24,10 +24,16 @@ const Career = () => {
               <p>{exp.description}</p>
             </div>
           ))}
-          <h2 style={{ marginTop: "50px" }}>
-            Education <span>&</span>
-            <br /> qualifications
-          </h2>
+        </div>
+
+        <h2 className="education-heading">
+          Education <span>&</span>
+          <br /> qualifications
+        </h2>
+        <div className="career-info">
+          <div className="career-timeline">
+            <div className="career-dot"></div>
+          </div>
           {PORTFOLIO.education.map((edu, index) => (
             <div className="career-info-box" key={index}>
               <div className="career-info-in">

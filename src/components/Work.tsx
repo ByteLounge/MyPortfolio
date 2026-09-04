@@ -17,10 +17,10 @@ const Work = () => {
         <div className="work-flex">
           {PORTFOLIO.projects.map((project, index) => (
             <div className="work-box" key={index}>
-              <a href={project.link} target="_blank" data-cursor="disable" rel="noreferrer" className="work-card-link">
+              <a href={project.link} target="_blank" data-cursor="disable" rel="noopener noreferrer" className="work-card-link">
                 <div className="work-info glass-card">
                   <div className="work-title">
-                    <h3>0{index + 1}</h3>
+                    <h3>{String(index + 1).padStart(2, "0")}</h3>
                     <div className="work-title-meta">
                       <h4>{project.title}</h4>
                       <p className="work-category">{project.category}</p>
@@ -29,11 +29,15 @@ const Work = () => {
                   <div className="work-details">
                     <span className="work-details-label">Tools and features</span>
                     <div className="work-tags">
-                      {project.tools.split(",").map((tool, idx) => (
-                        <span key={idx} className="work-tag">
-                          {tool.trim()}
-                        </span>
-                      ))}
+                      {project.tools
+                        .split(",")
+                        .map((tool) => tool.trim())
+                        .filter(Boolean)
+                        .map((tool, idx) => (
+                          <span key={idx} className="work-tag">
+                            {tool}
+                          </span>
+                        ))}
                     </div>
                   </div>
                   <div className="work-card-action">
@@ -49,7 +53,7 @@ const Work = () => {
           ))}
           <div className="work-box last-box">
             <div className="work-more">
-              <a href={PORTFOLIO.urls.moreProjects} target="_blank" data-cursor="disable" rel="noreferrer">
+              <a href={PORTFOLIO.urls.moreProjects} target="_blank" data-cursor="disable" rel="noopener noreferrer">
                 <span>View More on GitHub</span>
                 <FiArrowUpRight className="view-more-arrow" />
               </a>

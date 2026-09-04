@@ -5,7 +5,7 @@ import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 import "./styles/Navbar.css";
-import { useLoading } from "../context/LoadingProvider";
+import { useLoading } from "../context/loadingContext";
 import { initialFX } from "./utils/initialFX";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);

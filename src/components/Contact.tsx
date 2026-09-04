@@ -18,6 +18,7 @@ const Contact = () => {
               <a
                 href={PORTFOLIO.links.github}
                 target="_blank"
+                rel="noopener noreferrer"
                 data-cursor="disable"
                 className="contact-social"
               >
@@ -26,6 +27,7 @@ const Contact = () => {
               <a
                 href={PORTFOLIO.links.linkedin}
                 target="_blank"
+                rel="noopener noreferrer"
                 data-cursor="disable"
                 className="contact-social"
               >
@@ -34,6 +36,7 @@ const Contact = () => {
               <a
                 href={PORTFOLIO.links.instagram}
                 target="_blank"
+                rel="noopener noreferrer"
                 data-cursor="disable"
                 className="contact-social"
               >
@@ -42,6 +45,7 @@ const Contact = () => {
               <a
                 href={PORTFOLIO.links.blogspot}
                 target="_blank"
+                rel="noopener noreferrer"
                 data-cursor="disable"
                 className="contact-social"
               >

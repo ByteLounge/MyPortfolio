@@ -3,9 +3,9 @@ import "./styles/Cursor.css";
 
 const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
-    // Disable custom cursor on mobile/tablet devices
+    // Disable custom cursor on touch/small devices
     if (window.innerWidth <= 1024) return;
 
     let hover = false;
@@ -36,46 +36,39 @@ const Cursor = () => {
 
     animationFrameId = requestAnimationFrame(loop);
 
-    const interactiveElements = document.querySelectorAll("[data-cursor]");
-    const cleanups: Array<() => void> = [];
+    const onMouseOver = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest("[data-cursor]") as HTMLElement | null;
+      if (!target) return;
 
-    interactiveElements.forEach((item) => {
-      const element = item as HTMLElement;
-      
-      const onMouseOver = (e: MouseEvent) => {
-        const target = e.currentTarget as HTMLElement;
+      const cursorType = target.dataset.cursor;
+      if (cursorType === "icons") {
         const rect = target.getBoundingClientRect();
+        cursor.classList.add("cursor-icons");
+        cursor.style.height = `${rect.height}px`;
+        cursor.style.transform = `translate3d(${rect.left}px, ${rect.top}px, 0)`;
+        hover = true;
+      } else if (cursorType === "disable") {
+        cursor.classList.add("cursor-disable");
+      }
+    };
 
-        if (element.dataset.cursor === "icons") {
-          cursor.classList.add("cursor-icons");
-          cursor.style.height = `${rect.height}px`;
-          cursor.style.transform = `translate3d(${rect.left}px, ${rect.top}px, 0)`;
-          hover = true;
-        }
-        if (element.dataset.cursor === "disable") {
-          cursor.classList.add("cursor-disable");
-        }
-      };
+    const onMouseOut = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest("[data-cursor]") as HTMLElement | null;
+      if (!target) return;
 
-      const onMouseOut = () => {
-        cursor.classList.remove("cursor-disable", "cursor-icons");
-        cursor.style.height = "";
-        hover = false;
-      };
+      cursor.classList.remove("cursor-disable", "cursor-icons");
+      cursor.style.height = "";
+      hover = false;
+    };
 
-      element.addEventListener("mouseover", onMouseOver);
-      element.addEventListener("mouseout", onMouseOut);
-
-      cleanups.push(() => {
-        element.removeEventListener("mouseover", onMouseOver);
-        element.removeEventListener("mouseout", onMouseOut);
-      });
-    });
+    document.addEventListener("mouseover", onMouseOver);
+    document.addEventListener("mouseout", onMouseOut);
 
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseover", onMouseOver);
+      document.removeEventListener("mouseout", onMouseOut);
       cancelAnimationFrame(animationFrameId);
-      cleanups.forEach((cleanup) => cleanup());
     };
   }, []);
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdArrowOutward } from "react-icons/md";
 
 interface Props {
@@ -10,14 +10,29 @@ interface Props {
 
 const WorkImage = (props: Props) => {
   const [isVideo, setIsVideo] = useState(false);
-  const [video, setVideo] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
+
+  useEffect(() => {
+    return () => {
+      if (videoUrl) {
+        URL.revokeObjectURL(videoUrl);
+      }
+    };
+  }, [videoUrl]);
+
   const handleMouseEnter = async () => {
     if (props.video) {
-      setIsVideo(true);
-      const response = await fetch(`src/assets/${props.video}`);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      setVideo(blobUrl);
+      try {
+        setIsVideo(true);
+        if (!videoUrl) {
+          const res = await fetch(props.video);
+          const blob = await res.blob();
+          const objUrl = URL.createObjectURL(blob);
+          setVideoUrl(objUrl);
+        }
+      } catch (err) {
+        console.error("Error loading preview video:", err);
+      }
     }
   };
 
@@ -28,8 +43,8 @@ const WorkImage = (props: Props) => {
           <MdArrowOutward />
         </div>
       )}
-      <img src={props.image} alt={props.alt} />
-      {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
+      <img src={props.image} alt={props.alt || "Project Preview"} loading="lazy" />
+      {isVideo && videoUrl && <video src={videoUrl} autoPlay muted playsInline loop></video>}
     </>
   );
 
@@ -42,6 +57,7 @@ const WorkImage = (props: Props) => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={() => setIsVideo(false)}
           target="_blank"
+          rel="noopener noreferrer"
           data-cursor="disable"
         >
           {content}

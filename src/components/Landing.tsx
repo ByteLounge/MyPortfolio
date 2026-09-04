@@ -32,7 +32,9 @@ const Landing = ({ children }: PropsWithChildren) => {
             <span className="hero-subtitle">WELCOME TO MY PORTFOLIO</span>
             <h1 className="hero-title">
               {PORTFOLIO.person.name.split(" ")[0]}
-              <span className="accent-text"> {PORTFOLIO.person.name.split(" ")[1]}</span>
+              {PORTFOLIO.person.name.split(" ").slice(1).length > 0 && (
+                <span className="accent-text"> {PORTFOLIO.person.name.split(" ").slice(1).join(" ")}</span>
+              )}
             </h1>
             <h2 className="hero-tagline">{PORTFOLIO.person.tagline}</h2>
             <p className="hero-desc">{PORTFOLIO.person.title}</p>
@@ -42,6 +44,7 @@ const Landing = ({ children }: PropsWithChildren) => {
             <a 
               href={PORTFOLIO.urls.cvDownload} 
               target="_blank" 
+              rel="noopener noreferrer"
               className="btn btn-primary"
               data-cursor="disable"
             >
