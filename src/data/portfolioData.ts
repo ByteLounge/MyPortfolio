@@ -26,16 +26,28 @@ export const PORTFOLIO = {
   },
   experience: [
     {
-      dates: 'Jul 2025 - Aug 2025',
-      title: 'Artificial Intelligence Intern - Lenovo India',
+      dates: 'Aug 2026 - Oct 2026',
+      title: 'Cloud & AI Innovations Intern - Persistent Systems Ltd.',
       description:
-        'Focused on applied AI solutions, including NLP and prompt engineering. Built and deployed a Botpress chatbot and developed a Mental Health AI Assistant with contextual conversation flows and prompt fine-tuning.',
+        'Spearheaded the development of SupportSense AI, an enterprise customer support ticketing ecosystem featuring automated triage, sentiment monitoring, and resolution benchmarks. Built full-stack microservices with FastAPI, React, and Supabase with LLM integrations.',
+    },
+    {
+      dates: 'Aug 2026 - Sep 2026',
+      title: 'Web Development & AI Automation Intern - Fluxatic Global',
+      description:
+        'Contributed to web development and AI-automation workflows, delivering client-facing digital solutions across UI/UX implementation, full-stack integration, and automated business processes.',
     },
     {
       dates: 'Oct 2025 - Jan 2026',
       title: 'AI Automation Intern - Backend & Mobile App Intern (CareMeez-Visiwell Solutions Pvt. Ltd.)',
       description:
         'Supported backend database operations including video processing and data handling. Improved frontend UI elements of the CareMeez mobile app and assisted in debugging, optimization, and feature enhancements across the application stack.',
+    },
+    {
+      dates: 'Jul 2025 - Aug 2025',
+      title: 'Artificial Intelligence Intern - Lenovo India',
+      description:
+        'Focused on applied AI solutions, including NLP and prompt engineering. Built and deployed a Botpress chatbot and developed a Mental Health AI Assistant with contextual conversation flows and prompt fine-tuning.',
     },
     {
       dates: 'Jul 2024 - Aug 2024',
